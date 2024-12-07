@@ -32,7 +32,8 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '11' # Adjust Java version based on your project's requirements
+          distribution: 'temurin'
+          java-version: '17' # Adjust Java version based on your project's requirements
 
       - name: Install dependencies
         run: |
