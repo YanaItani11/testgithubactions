@@ -41,6 +41,19 @@ jobs:
           sudo apt-get install -y maven
           ./gradlew build
 
+      - name: Install Google Chrome
+        run: |
+          sudo apt update
+          sudo apt install -y google-chrome-stable
+
+      - name: Set up ChromeDriver
+        run: |
+          CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+
       - name: Run Selenium tests
         run: |
           mvn clean test -Dsurefire.reportFormat=plain # Ensure reports are generated in a consistent format
