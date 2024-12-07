@@ -3,8 +3,8 @@ package utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
@@ -33,8 +33,10 @@ public class DriverProvider {
     }
 
     private static void init() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless", "--disable-gpu", "--no-sandbox");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
