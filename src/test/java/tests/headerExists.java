@@ -4,7 +4,7 @@ import Ridango.pages.LogInPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class headerExists extends BaseTest {
+public class HeaderExists extends BaseTest {
     @Test
     public void headerExists(){
         LogInPage loginpage = new LogInPage();
